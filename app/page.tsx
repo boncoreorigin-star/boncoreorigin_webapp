@@ -657,7 +657,7 @@ function Transformation() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-terracotta px-10 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-bark hover:shadow-lg"
           >
-            Get Your Journal on Amazon
+            Get Your Pilates Kit On Amazon
             <span aria-hidden="true">→</span>
           </a>
         </div>
