@@ -6,6 +6,8 @@
  *   →  Products (The Plan & Tool)  →  Transformation (The Happy Ending)
  */
 
+import Image from "next/image";
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const products = [
@@ -217,18 +219,14 @@ function Hero() {
 
           {/* ── Hero image placeholder ── */}
           <div className="relative mx-auto w-full max-w-md md:max-w-none">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-linen">
-              <div className="absolute inset-0 bg-gradient-to-br from-sand/30 via-transparent to-linen/60" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-10 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-sand/50">
-                  <div className="h-10 w-10 rounded-full bg-bark/20" />
-                </div>
-                <p className="max-w-[200px] font-sans text-[0.65rem] leading-relaxed text-stone/80">
-                  [Photo: Woman in warm golden-hour light, sitting cross-legged
-                  on a cream yoga mat, holding the Boncore Origin journal —
-                  diverse representation, natural home setting]
-                </p>
-              </div>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-cream">
+              <Image
+                src="/pilates_ring_frontpage.png"
+                alt="Woman performing a Pilates ring exercise, seated on a chair"
+                fill
+                className="object-contain object-center"
+                priority
+              />
             </div>
 
             {/* Floating testimonial snippet */}
