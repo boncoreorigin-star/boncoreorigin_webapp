@@ -118,7 +118,7 @@ function Nav() {
             href="#products"
             className="font-sans text-sm font-medium text-bark/80 transition-colors hover:text-earth"
           >
-            The Journal
+            Products
           </a>
           <a
             href="#transformation"
