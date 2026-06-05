@@ -291,15 +291,13 @@ function Guide() {
 
           {/* Image placeholder */}
           <div className="relative order-last md:order-first">
-            <div className="aspect-square w-full overflow-hidden rounded-3xl bg-linen">
-              <div className="flex h-full flex-col items-center justify-center gap-4 p-10 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-sand/50">
-                  <div className="h-10 w-10 rounded-full bg-sage/30" />
-                </div>
-                <p className="max-w-[200px] font-sans text-[0.65rem] leading-relaxed text-stone/80">
-                  [Photo: The full Boncore Origin kit arranged neatly — Journal upright in the center, ring, ball, bands, and sliders surrounding it in warm natural light]
-                </p>
-              </div>
+            <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-linen">
+              <Image
+                src="/full_kit_photo.jpg"
+                alt="The full Boncore Origin Premium Pilates Essentials Kit arranged neatly — Journal upright in the center, surrounded by the ring, ball, bands, and sliders"
+                fill
+                className="object-cover object-center"
+              />
             </div>
 
             <div className="absolute -right-4 -top-8 hidden w-56 rounded-2xl bg-linen p-5 shadow-lg md:block">
