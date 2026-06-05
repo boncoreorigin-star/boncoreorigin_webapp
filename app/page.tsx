@@ -83,9 +83,9 @@ function Nav() {
           <Image
             src="/logo.png"
             alt="Boncore Origin"
-            width={160}
-            height={40}
-            className="h-10 w-auto"
+            width={320}
+            height={80}
+            className="h-20 w-auto"
             priority
           />
         </a>
