@@ -38,10 +38,10 @@ const kitHighlights = [
 
 const kitContents = [
   { qty: "1×", name: "Pro Pilates Ring", detail: "14\" Fiberglass & EVA · Beige", image: "/ring.png" },
-  { qty: "1×", name: "Matte Pilates Ball", detail: "20cm Anti-Burst · Beige + Hand Pump", image: "/miniballpic.png" },
+  { qty: "1×", name: "Matte Pilates Ball", detail: "20cm Anti-Burst · Beige + Hand Pump", image: "/MiniBallpic.png" },
   { qty: "1×", name: "Guided Pilates Journal", detail: "A5 PU Leather · 100gsm · 76 Custom Pages", image: "/journal.png" },
   { qty: "2×", name: "Core Sliders", detail: "Dual-Sided · Beige / Black", image: "/sliders.png" },
-  { qty: "3×", name: "Fabric Resistance Bands", detail: "Light · Medium · Heavy", image: "/loopband.png" },
+  { qty: "3×", name: "Fabric Resistance Bands", detail: "Light · Medium · Heavy", image: "/LoopBand.png" },
   { qty: "3×", name: "Yoga Stretch Bands", detail: "Beige · Professional Grade", image: null },
   { qty: "1×", name: "Exercise Booklet", detail: "13-Page · Full-Color Glossy", image: null },
 ];
