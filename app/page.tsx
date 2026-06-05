@@ -381,21 +381,14 @@ function Products() {
         <div className="mb-10 overflow-hidden rounded-3xl bg-cream shadow-sm">
           <div className="grid md:grid-cols-2">
 
-            {/* Image placeholder */}
-            <div className="relative min-h-[360px] bg-linen md:min-h-[560px]">
-              <div className="flex h-full flex-col items-center justify-center gap-4 p-10 text-center">
-                <span className="mb-2 rounded-full bg-terracotta/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-widest text-terracotta">
-                  Everything You Need
-                </span>
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-sand/40">
-                  <div className="h-10 w-10 rounded-full bg-bark/20" />
-                </div>
-                <p className="max-w-[210px] font-sans text-[0.65rem] leading-relaxed text-stone/80">
-                  [Photo: Kit flatlay — Journal standing upright in center, surrounded by
-                  ring, matte ball, sliders, resistance bands, stretch bands, and booklet.
-                  Warm golden-hour light on linen surface.]
-                </p>
-              </div>
+            {/* Product image */}
+            <div className="relative min-h-[360px] md:min-h-[560px]">
+              <Image
+                src="/journalwithtea.png"
+                alt="Boncore Origin Guided Pilates Journal with tea, warm golden-hour light"
+                fill
+                className="object-cover object-center"
+              />
             </div>
 
             {/* Details */}
