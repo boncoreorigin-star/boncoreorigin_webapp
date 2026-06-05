@@ -37,13 +37,13 @@ const kitHighlights = [
 ];
 
 const kitContents = [
-  { qty: "1×", name: "Pro Pilates Ring", detail: "14\" Fiberglass & EVA · Beige" },
-  { qty: "1×", name: "Matte Pilates Ball", detail: "20cm Anti-Burst · Beige + Hand Pump" },
-  { qty: "1×", name: "Guided Pilates Journal", detail: "A5 PU Leather · 100gsm · 76 Custom Pages" },
-  { qty: "2×", name: "Core Sliders", detail: "Dual-Sided · Beige / Black" },
-  { qty: "3×", name: "Fabric Resistance Bands", detail: "Light · Medium · Heavy" },
-  { qty: "3×", name: "Yoga Stretch Bands", detail: "Beige · Professional Grade" },
-  { qty: "1×", name: "Exercise Booklet", detail: "13-Page · Full-Color Glossy" },
+  { qty: "1×", name: "Pro Pilates Ring", detail: "14\" Fiberglass & EVA · Beige", image: "/ring.png" },
+  { qty: "1×", name: "Matte Pilates Ball", detail: "20cm Anti-Burst · Beige + Hand Pump", image: "/miniballpic.png" },
+  { qty: "1×", name: "Guided Pilates Journal", detail: "A5 PU Leather · 100gsm · 76 Custom Pages", image: "/journal.png" },
+  { qty: "2×", name: "Core Sliders", detail: "Dual-Sided · Beige / Black", image: "/sliders.png" },
+  { qty: "3×", name: "Fabric Resistance Bands", detail: "Light · Medium · Heavy", image: "/loopband.png" },
+  { qty: "3×", name: "Yoga Stretch Bands", detail: "Beige · Professional Grade", image: null },
+  { qty: "1×", name: "Exercise Booklet", detail: "13-Page · Full-Color Glossy", image: null },
 ];
 
 const testimonials = [
@@ -457,8 +457,19 @@ function Products() {
                 key={item.name}
                 className="flex flex-col items-center gap-2 rounded-2xl bg-linen p-4 text-center transition-shadow hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sand/50">
-                  <div className="h-5 w-5 rounded-full bg-bark/20" />
+                <div className="relative h-16 w-16 overflow-hidden rounded-xl bg-sand/30">
+                  {item.image ? (
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-contain p-1"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <div className="h-6 w-6 rounded-full bg-bark/20" />
+                    </div>
+                  )}
                 </div>
                 <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-widest text-terracotta">
                   {item.qty}
