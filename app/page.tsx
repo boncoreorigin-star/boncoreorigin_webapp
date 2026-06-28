@@ -178,89 +178,48 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="overflow-hidden bg-cream">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid min-h-[90vh] items-center gap-12 py-20 md:grid-cols-2 md:gap-16 md:py-0">
+    <section className="relative h-screen w-full">
 
-          {/* Copy */}
-          <div className="flex flex-col gap-8 md:py-32">
-            <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-terracotta">
-              Premium Pilates Essentials Kit — 7 Items
-            </p>
+      {/* Full-screen background image */}
+      <Image
+        src="/journalwithtea.png"
+        alt="Boncore Origin — The Start of Your Good Core Journey"
+        fill
+        className="object-cover object-center"
+        priority
+      />
 
-            <h1 className="font-serif text-5xl font-medium leading-[1.1] text-charcoal md:text-6xl lg:text-[3.75rem]">
-              The Start of Your Good Core Journey.
-            </h1>
+      {/* Gradient overlay for text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/45 to-charcoal/65" />
 
-            <p className="max-w-sm font-sans text-base leading-relaxed text-charcoal/55 md:text-lg">
-              A luxurious, accessible, and guided Pilates experience from the comfort of your home. We bridge the gap between digital movement and physical mindfulness.
-            </p>
+      {/* Centered content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+        <p className="mb-5 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-cream/75">
+          Premium Pilates Essentials Kit
+        </p>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a
-                href="#products"
-                className="inline-flex items-center justify-center rounded-full bg-charcoal px-8 py-4 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-all duration-300 ease-in-out hover:bg-earth hover:-translate-y-0.5 hover:shadow-xl hover:shadow-charcoal/15"
-              >
-                Begin Your Journey
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-sans text-xs font-semibold uppercase tracking-widest text-charcoal/50 underline-offset-4 transition-all duration-300 ease-in-out hover:text-charcoal hover:underline"
-              >
-                Shop on Amazon →
-              </a>
-            </div>
+        <h1 className="mb-6 max-w-3xl font-serif text-5xl font-medium leading-[1.1] text-cream md:text-6xl lg:text-7xl">
+          The Start of Your Good Core Journey.
+        </h1>
 
-            {/* Trust bar */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-linen pt-6">
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map((i) => (
-                    <span key={i} className="text-xs text-terracotta">★</span>
-                  ))}
-                </div>
-                <p className="font-sans text-xs text-charcoal/45">4.9 on Amazon</p>
-              </div>
-              <div className="h-4 w-px bg-linen" />
-              <p className="font-sans text-xs text-charcoal/45">7-Piece Essentials Kit</p>
-              <div className="h-4 w-px bg-linen" />
-              <p className="font-sans text-xs text-charcoal/45">Studio-Grade Quality</p>
-            </div>
-          </div>
+        <p className="mb-10 max-w-md font-sans text-base leading-relaxed text-cream/70 md:text-lg">
+          A luxurious, guided Pilates experience from the comfort of your home. Movement and mindfulness, together.
+        </p>
 
-          {/* Image */}
-          <div className="relative flex items-center justify-center">
-            {/* Background shape */}
-            <div
-              aria-hidden="true"
-              className="absolute -right-12 bottom-0 top-0 w-full rounded-3xl bg-stone md:-right-12 md:top-12 md:bottom-12"
-            />
-
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-stone">
-              <Image
-                src="/pilates_ring_frontpage.png"
-                alt="Woman performing Pilates exercises with the Boncore Origin kit"
-                fill
-                className="object-contain object-center"
-                priority
-              />
-            </div>
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 left-6 rounded-2xl bg-cream px-5 py-4 shadow-xl shadow-charcoal/10">
-              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-widest text-terracotta">
-                Journal Included
-              </p>
-              <p className="mt-0.5 font-serif text-sm font-medium text-charcoal">
-                76 Custom Pages
-              </p>
-            </div>
-          </div>
-
-        </div>
+        <a
+          href="#products"
+          className="rounded-full bg-cream px-10 py-4 font-sans text-xs font-semibold uppercase tracking-widest text-charcoal transition-all duration-300 ease-in-out hover:bg-terracotta hover:text-cream hover:-translate-y-0.5 hover:shadow-2xl"
+        >
+          Begin Your Journey
+        </a>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
+        <p className="font-sans text-[0.55rem] uppercase tracking-widest text-cream/40">Scroll</p>
+        <div className="h-10 w-px bg-cream/25" />
+      </div>
+
     </section>
   );
 }
