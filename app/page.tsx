@@ -1,211 +1,261 @@
 /**
- * Boncore Origin — Landing Page
- * StoryBrand: Customer = Hero, Struggle with starting Pilates = Villain,
- * Boncore Origin = Guide, Premium Pilates Essentials Kit = Tool
+ * Boncore Origin — Redesigned Landing Page
+ * Structure: Announcement Bar → Nav → Hero → Value Props →
+ *            Product Showcase → Social Proof → Footer
  */
 
 import Image from "next/image";
 
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
+
+function IconAccount() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+    </svg>
+  );
+}
+
+function IconCart() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+    </svg>
+  );
+}
+
+function IconCheck() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const kitHighlights = [
-  {
-    number: "01",
-    title: "The Only Kit With a Guided Pilates Journal",
-    body: "While others offer digital apps, we provide a tactile A5 premium PU leather journal. Document your movements, track your mindfulness, and watch your Origin Story unfold across 76 custom-designed pages.",
-  },
-  {
-    number: "02",
-    title: "Pro-Grade Ring & Matte Ball",
-    body: "Our 14\" ring is built with a high-tension fiberglass core and laser-engraved pads for a non-slip grip. Paired with a 20cm anti-burst matte ball for studio-level precision — at home.",
-  },
-  {
-    number: "03",
-    title: "Earthy, Minimalist Aesthetic",
-    body: "Ditch the neon plastics. Our Beige, Light Brown, and Cocoa palette is designed to blend into your home sanctuary as beautifully as it performs.",
-  },
-  {
-    number: "04",
-    title: "Total Body Toning Trio",
-    body: "Dual-sided core sliders, 3 premium fabric resistance bands (Light, Medium, Heavy) that won't roll or pinch, and 3 professional-grade latex stretch bands for deep flexibility.",
-  },
-  {
-    number: "05",
-    title: "Expert Guidance Included",
-    body: "Every kit includes a full-color, 13-page Exercise Booklet on premium glossy paper — a clear roadmap for beginners and enthusiasts alike to move with confidence and intent.",
-  },
+const benefits = [
+  "The only kit with a physical Guided Pilates Journal — 76 custom pages",
+  "Pro-grade 14\" ring with fiberglass core & laser-engraved non-slip pads",
+  "20cm anti-burst matte ball for studio-level sculpting at home",
+  "3 premium fabric resistance bands — won't roll, won't pinch",
+  "Dual-sided core sliders for low-impact full-body stability work",
+  "Full-color 13-page Exercise Booklet — for beginners to enthusiasts",
+  "Earthy Beige, Light Brown & Cocoa palette — designed for your home",
 ];
 
-const kitContents = [
-  { qty: "1×", name: "Pro Pilates Ring", detail: "14\" Fiberglass & EVA · Beige", image: "/ring.png" },
-  { qty: "1×", name: "Matte Pilates Ball", detail: "20cm Anti-Burst · Beige + Hand Pump", image: "/MiniBallpic.png" },
-  { qty: "1×", name: "Guided Pilates Journal", detail: "A5 PU Leather · 100gsm · 76 Custom Pages", image: "/journal.png" },
-  { qty: "2×", name: "Core Sliders", detail: "Dual-Sided · Beige / Black", image: "/sliders.png" },
-  { qty: "3×", name: "Fabric Resistance Bands", detail: "Light · Medium · Heavy", image: "/LoopBand.png" },
-  { qty: "3×", name: "Yoga Stretch Bands", detail: "Beige · Professional Grade", image: null },
-  { qty: "1×", name: "Exercise Booklet", detail: "13-Page · Full-Color Glossy", image: null },
+const colorOptions = [
+  { name: "Sand",  bg: "bg-[#D4C9B8]", selected: true  },
+  { name: "Clay",  bg: "bg-[#C4835A]", selected: false },
+  { name: "Sage",  bg: "bg-[#7A9B77]", selected: false },
+];
+
+const values = [
+  {
+    icon: "◆",
+    title: "Luxury for All",
+    body: "High-end aesthetics at an accessible price. Studio-grade equipment in a sophisticated Beige, Light Brown, and Cocoa palette — designed to elevate your home, not clash with it.",
+  },
+  {
+    icon: "◎",
+    title: "Mindful Accessibility",
+    body: "We simplify complex studio movements into guided, progressive sequences. Our 13-page Exercise Booklet gives beginners and enthusiasts alike a clear, confident roadmap.",
+  },
+  {
+    icon: "◻",
+    title: "Tactile Tracking",
+    body: "Unlike cold, screen-based apps, our A5 Guided Pilates Journal is a living document of your form, your feelings, and your progress. 76 custom pages. Entirely yours.",
+  },
 ];
 
 const testimonials = [
   {
-    quote:
-      "The journal alone is worth the price. I've never tracked my Pilates like this before. After six weeks I can already see the difference in my form and my mindset.",
+    quote: "I finally feel like I have a mentor, not just a workout timer. The journal changed everything — I can actually see my progress unfolding, page by page.",
     name: "Sarah M.",
     location: "Austin, TX",
-    detail: "Verified Amazon Purchase",
-    avatar: "Avatar: Black woman in her mid-30s, warm smile, natural home background",
+    avatar: "Black woman, mid-30s, warm natural home background",
   },
   {
-    quote:
-      "The ring and ball quality blew me away. And the aesthetic? My living room has never looked better. It feels like a luxury brand without the luxury price tag.",
+    quote: "The ring and ball quality is incredible. And the aesthetic? My living room has never looked better. Luxury without the luxury price tag.",
     name: "Priya K.",
     location: "New York, NY",
-    detail: "Verified Amazon Purchase",
-    avatar: "Avatar: South Asian woman, late 20s, relaxed expression, kit around her",
+    avatar: "South Asian woman, late 20s, relaxed expression with kit",
   },
   {
-    quote:
-      "I was a total beginner. The exercise booklet gave me a starting point, and the journal kept me accountable. Eight weeks later I'm obsessed — and my core has never been stronger.",
+    quote: "I was intimidated to start Pilates at my age. This kit makes me feel seen, guided, and capable. The exercise booklet was exactly what I needed on Day One.",
     name: "Daniela R.",
     location: "Los Angeles, CA",
-    detail: "Verified Amazon Purchase",
-    avatar: "Avatar: Latina woman in her early 40s, natural sunlight, radiant smile",
+    avatar: "Latina woman, early 40s, natural sunlight, radiant smile",
   },
 ];
 
-// ─── Navigation ───────────────────────────────────────────────────────────────
+const socialLinks = [
+  {
+    label: "Instagram",
+    path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z",
+  },
+  {
+    label: "Pinterest",
+    path: "M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z",
+  },
+  {
+    label: "TikTok",
+    path: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+  },
+];
+
+// ─── 1. Announcement Bar ──────────────────────────────────────────────────────
+
+function AnnouncementBar() {
+  return (
+    <div className="bg-charcoal py-2.5 text-center font-sans text-[0.65rem] font-medium uppercase tracking-widest text-cream/80">
+      Welcome to the Origin of your best self.{" "}
+      <span className="text-terracotta">Free mindful shipping</span> on your first order.
+    </div>
+  );
+}
+
+// ─── 2. Navigation ────────────────────────────────────────────────────────────
 
 function Nav() {
+  const navLinks = ["Shop", "Our Origin", "The Journal", "Community"];
+
   return (
-    <header className="sticky top-0 z-50 border-b border-sand/30 bg-cream/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
-        <a href="#">
-          <Image
-            src="/logo.png"
-            alt="Boncore Origin"
-            width={160}
-            height={40}
-            className="h-10 w-auto"
-            priority
-          />
-        </a>
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="#guide" className="font-sans text-sm font-medium text-bark/80 transition-colors hover:text-earth">
-            Our Story
+    <header className="sticky top-0 z-50 border-b border-linen bg-cream/95 backdrop-blur-md">
+      <div className="mx-auto grid max-w-7xl grid-cols-3 items-center px-6 py-3 md:px-12">
+
+        {/* Left: Logo */}
+        <div>
+          <a href="#">
+            <Image
+              src="/logo.png"
+              alt="Boncore Origin"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </a>
-          <a href="#products" className="font-sans text-sm font-medium text-bark/80 transition-colors hover:text-earth">
-            Products
-          </a>
-          <a href="#transformation" className="font-sans text-sm font-medium text-bark/80 transition-colors hover:text-earth">
-            Community
-          </a>
+        </div>
+
+        {/* Center: Nav links */}
+        <nav className="hidden items-center justify-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href="#"
+              className="font-sans text-[0.65rem] font-medium uppercase tracking-widest text-charcoal/60 transition-all duration-300 ease-in-out hover:text-charcoal"
+            >
+              {link}
+            </a>
+          ))}
         </nav>
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-terracotta px-5 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-bark"
-        >
-          Shop on Amazon
-        </a>
+
+        {/* Right: Icons */}
+        <div className="flex items-center justify-end gap-5 text-charcoal/60">
+          <a
+            href="#"
+            aria-label="My Account"
+            className="transition-all duration-300 ease-in-out hover:text-charcoal"
+          >
+            <IconAccount />
+          </a>
+          <a
+            href="#"
+            aria-label="Shopping Cart"
+            className="transition-all duration-300 ease-in-out hover:text-charcoal"
+          >
+            <IconCart />
+          </a>
+        </div>
+
       </div>
     </header>
   );
 }
 
-// ─── Hero ─────────────────────────────────────────────────────────────────────
+// ─── 3. Hero ──────────────────────────────────────────────────────────────────
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-cream py-24 md:py-36">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 h-[700px] w-[700px] rounded-full bg-linen opacity-70"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -left-24 h-[500px] w-[500px] rounded-full bg-sand/20"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid items-center gap-16 md:grid-cols-2">
+    <section className="overflow-hidden bg-cream">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="grid min-h-[90vh] items-center gap-12 py-20 md:grid-cols-2 md:gap-16 md:py-0">
 
           {/* Copy */}
-          <div className="flex flex-col gap-7">
-            <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-terracotta">
-              Premium Pilates Essentials Kit · 7 Items
+          <div className="flex flex-col gap-8 md:py-32">
+            <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-terracotta">
+              Premium Pilates Essentials Kit — 7 Items
             </p>
 
-            <h1 className="font-serif text-5xl font-medium leading-[1.1] text-earth md:text-6xl lg:text-[4.25rem]">
-              You don&apos;t need to know where to start.{" "}
-              <em className="italic text-terracotta">You just need an Origin.</em>
+            <h1 className="font-serif text-5xl font-medium leading-[1.1] text-charcoal md:text-6xl lg:text-[3.75rem]">
+              The Start of Your Good Core Journey.
             </h1>
 
-            <p className="max-w-md font-sans text-base leading-relaxed text-bark/80 md:text-lg">
-              <em>Bon</em> means Good in French. At Boncore Origin, we believe your
-              fitness journey deserves a beautiful beginning — one complete kit that
-              elevates your home and your core.
+            <p className="max-w-sm font-sans text-base leading-relaxed text-charcoal/55 md:text-lg">
+              A luxurious, accessible, and guided Pilates experience from the comfort of your home. We bridge the gap between digital movement and physical mindfulness.
             </p>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <a
                 href="#products"
-                className="inline-flex items-center justify-center rounded-full bg-earth px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-bark hover:shadow-lg"
+                className="inline-flex items-center justify-center rounded-full bg-charcoal px-8 py-4 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-all duration-300 ease-in-out hover:bg-earth hover:-translate-y-0.5 hover:shadow-xl hover:shadow-charcoal/15"
               >
-                Explore the Kit
+                Begin Your Journey
               </a>
               <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-earth/40 px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-earth transition-all duration-300 hover:bg-earth hover:text-cream"
+                className="font-sans text-xs font-semibold uppercase tracking-widest text-charcoal/50 underline-offset-4 transition-all duration-300 ease-in-out hover:text-charcoal hover:underline"
               >
-                Shop on Amazon
+                Shop on Amazon →
               </a>
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-6 border-t border-sand/50 pt-6">
-              <div>
-                <p className="font-serif text-2xl font-semibold text-earth">7</p>
-                <p className="font-sans text-xs text-stone">Items Included</p>
+            {/* Trust bar */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-linen pt-6">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((i) => (
+                    <span key={i} className="text-xs text-terracotta">★</span>
+                  ))}
+                </div>
+                <p className="font-sans text-xs text-charcoal/45">4.9 on Amazon</p>
               </div>
-              <div className="h-8 w-px bg-sand" />
-              <div>
-                <p className="font-serif text-2xl font-semibold text-earth">4.9 ★</p>
-                <p className="font-sans text-xs text-stone">Amazon Rating</p>
-              </div>
-              <div className="h-8 w-px bg-sand" />
-              <div>
-                <p className="font-serif text-2xl font-semibold text-earth">Studio</p>
-                <p className="font-sans text-xs text-stone">Grade Quality</p>
-              </div>
+              <div className="h-4 w-px bg-linen" />
+              <p className="font-sans text-xs text-charcoal/45">7-Piece Essentials Kit</p>
+              <div className="h-4 w-px bg-linen" />
+              <p className="font-sans text-xs text-charcoal/45">Studio-Grade Quality</p>
             </div>
           </div>
 
-          {/* Hero image */}
-          <div className="relative mx-auto w-full max-w-md md:max-w-none">
-            <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-cream">
+          {/* Image */}
+          <div className="relative flex items-center justify-center">
+            {/* Background shape */}
+            <div
+              aria-hidden="true"
+              className="absolute -right-12 bottom-0 top-0 w-full rounded-3xl bg-stone md:-right-12 md:top-12 md:bottom-12"
+            />
+
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-stone">
               <Image
                 src="/pilates_ring_frontpage.png"
-                alt="Woman performing a Pilates ring exercise, seated on a chair"
+                alt="Woman performing Pilates exercises with the Boncore Origin kit"
                 fill
                 className="object-contain object-center"
                 priority
               />
             </div>
 
-            {/* Floating review snippet */}
-            <div className="absolute -bottom-5 -left-5 max-w-[155px] rounded-2xl bg-warm-white p-4 shadow-xl">
-              <div className="mb-1.5 flex gap-0.5">
-                {["★", "★", "★", "★", "★"].map((s, i) => (
-                  <span key={i} className="text-[10px] text-terracotta">{s}</span>
-                ))}
-              </div>
-              <p className="font-sans text-[11px] leading-snug text-bark">
-                &ldquo;The journal alone is worth it.&rdquo;
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 left-6 rounded-2xl bg-cream px-5 py-4 shadow-xl shadow-charcoal/10">
+              <p className="font-sans text-[0.55rem] font-semibold uppercase tracking-widest text-terracotta">
+                Journal Included
               </p>
-              <p className="mt-1 font-sans text-[10px] text-stone">— Priya K.</p>
+              <p className="mt-0.5 font-serif text-sm font-medium text-charcoal">
+                76 Custom Pages
+              </p>
             </div>
           </div>
 
@@ -215,284 +265,149 @@ function Hero() {
   );
 }
 
-// ─── Problem ──────────────────────────────────────────────────────────────────
+// ─── 4. Value Props ───────────────────────────────────────────────────────────
 
-function Problem() {
-  const painPoints = [
-    {
-      number: "01",
-      heading: "The Studio Wall",
-      body: "$40–$60 a class adds up fast. Studio Pilates was never meant to be a privilege — yet here we are, priced out of the calm and strength we deserve.",
-    },
-    {
-      number: "02",
-      heading: "The App Trap",
-      body: "Fitness apps hand you a screen and a timer. No tactile connection, no mindfulness tracking, no paper record of who you were and who you're becoming.",
-    },
-    {
-      number: "03",
-      heading: "The Equipment Problem",
-      body: "Cheap, mismatched gear that rolls, pinches, and clashes with your home. You deserve equipment that performs as beautifully as it looks.",
-    },
-  ];
-
+function ValueProps() {
   return (
-    <section id="problem" className="bg-linen py-24 md:py-32">
+    <section className="bg-stone py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <p className="mb-4 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-stone">
-          The Struggle
-        </p>
 
-        <div className="grid gap-12 md:grid-cols-2 md:gap-20">
-          <h2 className="font-serif text-4xl font-medium leading-tight text-earth md:text-5xl">
-            Starting Pilates at home feels harder than it should.
+        <div className="mb-16 text-center">
+          <p className="mb-4 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-terracotta">
+            The Guided Difference
+          </p>
+          <h2 className="mx-auto max-w-2xl font-serif text-4xl font-medium leading-tight text-charcoal md:text-5xl">
+            The Only Brand That Guides Your Movement{" "}
+            <em className="italic">and</em> Your Mindfulness.
           </h2>
-          <div className="flex items-center">
-            <p className="font-sans text-base leading-relaxed text-bark/80 md:text-lg">
-              You feel the pull toward the Pilates lifestyle — the calm, the posture,
-              the ritual. But between studio prices, cold apps, and cheap gear, the path
-              gets noisy.{" "}
-              <strong className="font-semibold text-bark">
-                You&apos;re not the problem. You just haven&apos;t had the right kit yet.
-              </strong>
-            </p>
-          </div>
+          <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-charcoal/55">
+            While others keep you locked in a screen-based loop, we give you something real — a tactile, living practice that evolves with you.
+          </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {painPoints.map((point) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {values.map((v) => (
             <div
-              key={point.number}
-              className="rounded-2xl bg-cream p-8 transition-shadow hover:shadow-md"
+              key={v.title}
+              className="group rounded-3xl bg-cream p-10 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-charcoal/8"
             >
-              <p className="mb-6 font-serif text-5xl font-light text-sand">{point.number}</p>
-              <h3 className="mb-3 font-serif text-xl font-medium text-earth">{point.heading}</h3>
-              <p className="font-sans text-sm leading-relaxed text-bark/80">{point.body}</p>
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-linen text-xl text-charcoal/30">
+                {v.icon}
+              </div>
+              <h3 className="mb-3 font-serif text-xl font-medium text-charcoal">
+                {v.title}
+              </h3>
+              <p className="font-sans text-sm leading-relaxed text-charcoal/60">
+                {v.body}
+              </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
 
-// ─── Guide ────────────────────────────────────────────────────────────────────
+// ─── 5. Product Showcase ──────────────────────────────────────────────────────
 
-function Guide() {
-  const features = [
-    "The only home kit with a physical Guided Pilates Journal — 76 custom pages",
-    "Pro-grade ring, ball, sliders, and bands in one cohesive, beautiful kit",
-    "An earthy minimalist palette (Beige, Light Brown, Cocoa) designed for your home",
-    "A 13-page Exercise Booklet so you always know exactly what to do next",
-    "Bon means Good in French — this is the beginning of your Good Core story",
-  ];
-
+function ProductShowcase() {
   return (
-    <section id="guide" className="bg-cream py-24 md:py-36">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <p className="mb-16 text-center font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-stone">
-          The Guide
-        </p>
-
-        <div className="grid items-center gap-16 md:grid-cols-2">
-
-          {/* Image placeholder */}
-          <div className="relative order-last md:order-first">
-            <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-linen">
-              <Image
-                src="/full_kit_photo.jpg"
-                alt="The full Boncore Origin Premium Pilates Essentials Kit arranged neatly — Journal upright in the center, surrounded by the ring, ball, bands, and sliders"
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-
-            <div className="absolute -right-4 -top-8 hidden w-56 rounded-2xl bg-linen p-5 shadow-lg md:block">
-              <p className="font-serif text-sm italic leading-snug text-bark">
-                &ldquo;The only brand that guides your movement on the mat and your
-                mindfulness in the journal.&rdquo;
-              </p>
-              <div className="mt-3 h-px w-8 bg-terracotta" />
-            </div>
-          </div>
-
-          {/* Copy */}
-          <div className="flex flex-col gap-8">
-            <h2 className="font-serif text-4xl font-medium leading-tight text-earth md:text-5xl">
-              Meet your partner on the mat.
-            </h2>
-            <p className="font-sans text-base leading-relaxed text-bark/80 md:text-lg">
-              Boncore Origin was built for the modern woman who values mindfulness as much
-              as movement. We didn&apos;t just bundle equipment — we built an experience
-              that begins the moment you open the box.
-            </p>
-            <p className="font-sans text-base leading-relaxed text-bark/80">
-              Every piece in the kit is chosen to work together: the Journal anchors your
-              practice, the equipment elevates it, and the booklet guides you from Day One.
-            </p>
-
-            <ul className="flex flex-col gap-4">
-              {features.map((feat, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sage/20 font-sans text-xs text-sage">
-                    ✓
-                  </span>
-                  <p className="font-sans text-sm leading-relaxed text-bark">{feat}</p>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#products"
-              className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-earth px-8 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-bark hover:shadow-lg"
-            >
-              See What&apos;s Inside
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Products ─────────────────────────────────────────────────────────────────
-
-function Products() {
-  return (
-    <section id="products" className="bg-parchment py-24 md:py-32">
+    <section id="products" className="bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
 
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <p className="mb-4 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-stone">
-            The Kit
-          </p>
-          <h2 className="font-serif text-4xl font-medium text-earth md:text-5xl">
-            Premium Pilates Essentials Kit
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg font-serif text-lg italic text-bark/70">
-            &ldquo;The only kit with a Guided Pilates Journal.&rdquo;
-          </p>
-        </div>
-
-        {/* Main product showcase */}
-        <div className="mb-10 overflow-hidden rounded-3xl bg-cream shadow-sm">
+        <div className="overflow-hidden rounded-3xl bg-stone">
           <div className="grid md:grid-cols-2">
 
             {/* Product image */}
-            <div className="relative min-h-[360px] md:min-h-[560px]">
+            <div className="relative min-h-[400px] md:min-h-[620px]">
               <Image
                 src="/journalwithtea.png"
-                alt="Boncore Origin Guided Pilates Journal with tea, warm golden-hour light"
+                alt="Boncore Origin Premium Pilates Essentials Kit — Journal and lifestyle"
                 fill
                 className="object-cover object-center"
               />
+              <div className="absolute left-5 top-5">
+                <span className="rounded-full bg-charcoal/85 px-4 py-2 font-sans text-[0.6rem] font-semibold uppercase tracking-widest text-cream backdrop-blur-sm">
+                  7 Items Included
+                </span>
+              </div>
             </div>
 
             {/* Details */}
-            <div className="flex flex-col justify-center gap-6 p-10 md:p-14">
+            <div className="flex flex-col justify-center gap-7 bg-cream p-10 md:p-14">
               <div>
-                <p className="mb-1 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone">
+                <p className="mb-2 font-sans text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-terracotta">
                   Boncore Origin
                 </p>
-                <h3 className="font-serif text-3xl font-medium leading-tight text-earth md:text-4xl">
+                <h2 className="font-serif text-3xl font-medium leading-tight text-charcoal md:text-4xl">
                   Premium Pilates<br />Essentials Kit
-                </h3>
-                <p className="mt-2 font-sans text-sm leading-relaxed text-bark/70">
-                  <em>Bon</em> means Good in French. Your Good Core journey starts here.
+                </h2>
+                <p className="mt-2 font-serif text-sm italic text-charcoal/45">
+                  The only kit with a Guided Pilates Journal.
                 </p>
               </div>
 
-              <p className="font-sans text-sm leading-relaxed text-bark/80">
-                At Boncore Origin, we believe your fitness journey deserves a beautiful
-                beginning. By blending high-end design with mindful guidance, we&apos;ve
-                created a kit that doesn&apos;t just sit in your living room — it elevates it.
-              </p>
+              {/* Stars */}
+              <div className="flex items-center gap-3">
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map((i) => (
+                    <span key={i} className="text-base text-terracotta">★</span>
+                  ))}
+                </div>
+                <p className="font-sans text-xs text-charcoal/45">4.9 · Verified Amazon Reviews</p>
+              </div>
 
-              {/* 5 highlights */}
-              <ul className="flex flex-col gap-4">
-                {kitHighlights.map((h) => (
-                  <li key={h.number} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-terracotta/15 font-sans text-[10px] font-semibold text-terracotta">
-                      {h.number}
+              {/* Benefits */}
+              <ul className="flex flex-col gap-2.5">
+                {benefits.map((b, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage/20 text-sage">
+                      <IconCheck />
                     </span>
-                    <div>
-                      <p className="font-sans text-xs font-semibold text-earth">{h.title}</p>
-                      <p className="mt-0.5 font-sans text-xs leading-relaxed text-bark/70">
-                        {h.body}
-                      </p>
-                    </div>
+                    <p className="font-sans text-xs leading-relaxed text-charcoal/65">{b}</p>
                   </li>
                 ))}
               </ul>
 
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Buy the Boncore Origin Premium Pilates Essentials Kit on Amazon"
-                className="mt-2 rounded-full bg-terracotta py-4 text-center font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-bark hover:shadow-lg"
-              >
-                Buy Now on Amazon
-              </a>
-            </div>
-
-          </div>
-        </div>
-
-        {/* What's in the Box */}
-        <div className="rounded-3xl bg-cream p-8 md:p-12">
-          <h3 className="mb-2 text-center font-serif text-2xl font-medium text-earth">
-            What&apos;s in the Box
-          </h3>
-          <p className="mb-10 text-center font-sans text-sm text-stone">
-            7 items. Everything you need. Nothing you don&apos;t.
-          </p>
-
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
-            {kitContents.map((item) => (
-              <div
-                key={item.name}
-                className="flex flex-col items-center gap-2 rounded-2xl bg-linen p-4 text-center transition-shadow hover:shadow-md"
-              >
-                <div className="relative h-16 w-16 overflow-hidden rounded-xl bg-sand/30">
-                  {item.image ? (
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-contain p-1"
+              {/* Color selector */}
+              <div>
+                <p className="mb-3 font-sans text-[0.65rem] font-semibold uppercase tracking-widest text-charcoal/45">
+                  Colour: <span className="text-charcoal">Sand</span>
+                </p>
+                <div className="flex gap-3">
+                  {colorOptions.map((c) => (
+                    <button
+                      key={c.name}
+                      type="button"
+                      title={c.name}
+                      aria-label={`Select colour ${c.name}`}
+                      className={`h-8 w-8 rounded-full ${c.bg} transition-all duration-300 ease-in-out ${
+                        c.selected
+                          ? "scale-110 ring-2 ring-charcoal ring-offset-2"
+                          : "hover:scale-105 hover:ring-2 hover:ring-charcoal/30 hover:ring-offset-1"
+                      }`}
                     />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center">
-                      <div className="h-6 w-6 rounded-full bg-bark/20" />
-                    </div>
-                  )}
+                  ))}
                 </div>
-                <p className="font-sans text-[0.6rem] font-semibold uppercase tracking-widest text-terracotta">
-                  {item.qty}
-                </p>
-                <p className="font-sans text-xs font-semibold leading-tight text-earth">
-                  {item.name}
-                </p>
-                <p className="font-sans text-[0.6rem] leading-relaxed text-stone">
-                  {item.detail}
+              </div>
+
+              {/* CTA */}
+              <div className="flex flex-col gap-3">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center rounded-full bg-charcoal py-4 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-all duration-300 ease-in-out hover:bg-earth hover:-translate-y-0.5 hover:shadow-xl hover:shadow-charcoal/20"
+                >
+                  Add to Cart — Amazon
+                </a>
+                <p className="text-center font-sans text-[0.6rem] text-charcoal/35">
+                  Ships from Amazon · Free returns · Secure checkout
                 </p>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-10 text-center">
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-earth/40 px-8 py-3.5 font-sans text-xs font-semibold uppercase tracking-widest text-earth transition-all duration-300 hover:bg-earth hover:text-cream"
-            >
-              View Full Kit on Amazon →
-            </a>
+            </div>
           </div>
         </div>
 
@@ -501,57 +416,50 @@ function Products() {
   );
 }
 
-// ─── Transformation ───────────────────────────────────────────────────────────
+// ─── 6. Social Proof ──────────────────────────────────────────────────────────
 
-function Transformation() {
+function SocialProof() {
   return (
-    <section id="transformation" className="bg-cream py-24 md:py-32">
+    <section id="community" className="bg-stone py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
 
-        <div className="mb-12 text-center">
-          <p className="mb-4 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-stone">
-            The Transformation
-          </p>
-          <h2 className="font-serif text-4xl font-medium text-earth md:text-5xl">
-            Your next chapter begins here.
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg font-sans text-base leading-relaxed text-bark/80">
-            Real women. Real homes. Real progress. See what happens when the right kit finds you.
-          </p>
-        </div>
-
         <div className="mb-16 text-center">
-          <p className="font-serif text-2xl font-medium italic leading-snug text-earth md:text-3xl">
-            &ldquo;Welcome to the Origin of your best self.&rdquo;
+          <p className="mb-4 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-terracotta">
+            The Community
           </p>
-          <div className="mx-auto mt-5 h-px w-16 bg-terracotta" />
+          <h2 className="font-serif text-4xl font-medium text-charcoal md:text-5xl">
+            Real Women. Real Homes. Real Progress.
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg font-sans text-base leading-relaxed text-charcoal/55">
+            See what happens when the right guide finds you.
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="flex flex-col gap-5 rounded-2xl bg-linen p-8 transition-shadow hover:shadow-md"
+              className="flex flex-col gap-5 rounded-3xl bg-cream p-8 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-charcoal/8"
             >
               <div className="flex gap-1">
-                {["★", "★", "★", "★", "★"].map((s, i) => (
-                  <span key={i} className="text-sm text-terracotta">{s}</span>
+                {[1,2,3,4,5].map((i) => (
+                  <span key={i} className="text-sm text-terracotta">★</span>
                 ))}
               </div>
-              <blockquote className="font-serif text-base italic leading-relaxed text-earth">
+              <blockquote className="font-serif text-base italic leading-relaxed text-charcoal">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <div className="flex items-center gap-3 border-t border-sand/50 pt-4">
+              <div className="flex items-center gap-3 border-t border-linen pt-4">
                 <div
-                  className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand/60"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linen"
                   title={t.avatar}
                 >
-                  <div className="h-5 w-5 rounded-full bg-stone/30" />
+                  <div className="h-5 w-5 rounded-full bg-sand/60" />
                 </div>
                 <div>
-                  <p className="font-sans text-sm font-semibold text-earth">{t.name}</p>
-                  <p className="font-sans text-xs text-stone">
-                    {t.location} · {t.detail}
+                  <p className="font-sans text-sm font-semibold text-charcoal">{t.name}</p>
+                  <p className="font-sans text-xs text-charcoal/40">
+                    {t.location} · Verified Purchase
                   </p>
                 </div>
               </div>
@@ -560,14 +468,11 @@ function Transformation() {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="mb-6 font-sans text-base text-bark/70">
-            Ready to start your own story?
-          </p>
           <a
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-terracotta px-10 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-bark hover:shadow-lg"
+            className="inline-flex items-center gap-2 rounded-full bg-charcoal px-10 py-4 font-sans text-sm font-semibold uppercase tracking-widest text-cream transition-all duration-300 ease-in-out hover:bg-earth hover:-translate-y-0.5 hover:shadow-xl hover:shadow-charcoal/20"
           >
             Get Your Pilates Kit On Amazon
             <span aria-hidden="true">→</span>
@@ -579,55 +484,84 @@ function Transformation() {
   );
 }
 
-// ─── Footer ───────────────────────────────────────────────────────────────────
+// ─── 7. Footer ────────────────────────────────────────────────────────────────
 
 function Footer() {
-  const shopLinks = [
-    "Premium Pilates Essentials Kit",
-    "Guided Pilates Journal",
-    "Gift Cards",
-  ];
-
-  const companyLinks = [
-    "Our Story",
-    "Community",
-    "Blog",
-    "Sustainability",
-    "Contact",
-  ];
+  const shopLinks   = ["Premium Pilates Kit", "Guided Pilates Journal", "Gift Cards", "Bundles"];
+  const companyLinks = ["Our Origin", "The Journal", "Community", "Sustainability", "Contact"];
 
   return (
-    <footer className="bg-earth text-cream">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-20">
+    <footer className="bg-charcoal text-cream">
+
+      {/* Newsletter bar */}
+      <div className="border-b border-cream/10">
+        <div className="mx-auto max-w-7xl px-6 py-14 md:px-12">
+          <div className="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
+            <div className="shrink-0">
+              <h3 className="font-serif text-2xl font-medium text-cream">
+                Join the Core Community.
+              </h3>
+              <p className="mt-1.5 font-sans text-sm text-cream/45">
+                Mindful movement tips, new arrivals, and origin stories. No noise.
+              </p>
+            </div>
+            <form action="#" className="flex w-full max-w-sm gap-3">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="flex-1 rounded-full border border-cream/20 bg-cream/10 px-5 py-3 font-sans text-sm text-cream placeholder-cream/30 outline-none transition-all duration-300 focus:border-cream/40 focus:bg-cream/15"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-terracotta px-6 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-all duration-300 ease-in-out hover:bg-bark"
+              >
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer grid */}
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">
         <div className="grid gap-12 md:grid-cols-4">
 
+          {/* Brand */}
           <div className="md:col-span-2">
-            <p className="mb-3 font-serif text-2xl font-semibold text-cream">
-              Boncore Origin
+            <Image
+              src="/logo.png"
+              alt="Boncore Origin"
+              width={140}
+              height={35}
+              className="mb-5 h-9 w-auto brightness-0 invert"
+            />
+            <p className="mb-7 max-w-xs font-sans text-sm leading-relaxed text-cream/45">
+              <em>Bon</em> means Good in French. The only brand that guides your movement on the mat and your mindfulness in the journal. Welcome to the Origin of your best self.
             </p>
-            <p className="mb-7 max-w-xs font-sans text-sm leading-relaxed text-cream/60">
-              <em>Bon</em> means Good in French. The only brand that guides your movement
-              on the mat and your mindfulness in the journal. Welcome to the Origin of
-              your best self.
-            </p>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-terracotta px-7 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-cream transition-colors hover:bg-bark"
-            >
-              Shop on Amazon →
-            </a>
+            <div className="flex gap-3">
+              {socialLinks.map(({ label, path }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/15 text-cream/40 transition-all duration-300 ease-in-out hover:border-cream/35 hover:text-cream"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                    <path d={path} />
+                  </svg>
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-cream/40">
+            <p className="mb-5 font-sans text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-cream/30">
               Shop
             </p>
             <ul className="flex flex-col gap-3">
               {shopLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="font-sans text-sm text-cream/70 transition-colors hover:text-cream">
+                  <a href="#" className="font-sans text-sm text-cream/55 transition-colors duration-300 hover:text-cream">
                     {link}
                   </a>
                 </li>
@@ -636,13 +570,13 @@ function Footer() {
           </div>
 
           <div>
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-cream/40">
+            <p className="mb-5 font-sans text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-cream/30">
               Company
             </p>
             <ul className="flex flex-col gap-3">
               {companyLinks.map((link) => (
                 <li key={link}>
-                  <a href="#" className="font-sans text-sm text-cream/70 transition-colors hover:text-cream">
+                  <a href="#" className="font-sans text-sm text-cream/55 transition-colors duration-300 hover:text-cream">
                     {link}
                   </a>
                 </li>
@@ -652,17 +586,14 @@ function Footer() {
 
         </div>
 
+        {/* Bottom bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-cream/10 pt-8 md:flex-row">
-          <p className="font-sans text-xs text-cream/40">
+          <p className="font-sans text-xs text-cream/30">
             © 2026 Boncore Origin. All rights reserved.
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Use", "Accessibility"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="font-sans text-xs text-cream/40 transition-colors hover:text-cream/70"
-              >
+              <a key={link} href="#" className="font-sans text-xs text-cream/30 transition-colors duration-300 hover:text-cream/60">
                 {link}
               </a>
             ))}
@@ -679,13 +610,13 @@ function Footer() {
 export default function Home() {
   return (
     <>
+      <AnnouncementBar />
       <Nav />
       <main>
         <Hero />
-        <Problem />
-        <Guide />
-        <Products />
-        <Transformation />
+        <ValueProps />
+        <ProductShowcase />
+        <SocialProof />
       </main>
       <Footer />
     </>

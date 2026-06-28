@@ -1,20 +1,19 @@
 @import "tailwindcss";
 
 /* ─── Brand Palette: Earthy Minimalism ───────────────────────────────────────
-   Design language: clean, uncluttered, rooted in nature. Each color evokes
-   a tactile material — cream linen, warm sand, smooth stone, rich bark.
+   Inspired by BetterMe's crisp e-commerce structure with a luxurious,
+   nature-rooted aesthetic. Every color evokes a natural material.
 ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-cream: #FAF7F2;
-  --color-linen: #F0E8DC;
-  --color-parchment: #E5D9C8;
-  --color-sand: #C9B99B;
-  --color-stone: #9B8E82;
+  --color-cream: #FDFBF7;
+  --color-linen: #E6DFD3;
+  --color-stone: #ECE9E4;
+  --color-sand: #D4C9B8;
+  --color-charcoal: #2C302E;
+  --color-earth: #3A3F3A;
   --color-bark: #5C3D28;
-  --color-earth: #2D1F14;
   --color-sage: #6B7A5E;
   --color-terracotta: #C06B4E;
-  --color-warm-white: #FDFAF6;
 }
 
 /* ─── Typography: next/font variables → Tailwind font utilities ──────────── */
@@ -29,6 +28,6 @@ html {
 }
 
 body {
-  background-color: #FAF7F2;
-  color: #2D1F14;
+  background-color: #FDFBF7;
+  color: #2C302E;
 }
