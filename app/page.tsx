@@ -182,7 +182,7 @@ function Hero() {
 
       {/* Full-screen background image */}
       <Image
-        src="/journalwithtea.png"
+        src="/model_with_pilatesring_in_studio.png"
         alt="Boncore Origin — The Start of Your Good Core Journey"
         fill
         className="object-cover object-center"
