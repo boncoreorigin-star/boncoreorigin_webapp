@@ -281,7 +281,7 @@ function ProductShowcase() {
             {/* Product image */}
             <div className="relative min-h-[400px] md:min-h-[620px]">
               <Image
-                src="/journalwithtea.png"
+                src="/full_kit_photo.jpg"
                 alt="Boncore Origin Premium Pilates Essentials Kit — Journal and lifestyle"
                 fill
                 className="object-cover object-center"
