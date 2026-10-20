@@ -13,13 +13,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-linen bg-cream/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 md:grid md:grid-cols-3 md:px-12">
 
-        <Link href="/" className="shrink-0">
+        {/* The logo PNG has wide transparent padding; this frame crops to the wordmark so it renders 40px (mobile) / 48px (desktop) tall. */}
+        <Link href="/" className="relative block aspect-[1655/420] h-10 shrink-0 overflow-hidden md:h-12">
           <Image
             src="/images/logo-black-transparent.png"
             alt="Boncore Origin logo"
-            width={160}
-            height={40}
-            className="h-10 w-auto"
+            width={5100}
+            height={3300}
+            sizes="240px"
+            className="absolute max-w-none"
+            style={{ width: "120.85%", height: "308.1%", left: "-11.78%", top: "-105.95%" }}
             priority
           />
         </Link>

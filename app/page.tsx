@@ -151,13 +151,13 @@ function Hero() {
           </p>
         </div>
 
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-stone">
+        <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-[#F4EDE2]">
           <Image
             src="/images/hero-kit.jpg"
             alt="Boncore Origin Premium Pilates Essentials Kit — Pilates ring, mini ball, resistance bands, core sliders, exercise book and Guided Pilates Journal"
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover object-center"
+            className="object-contain object-center"
             priority
           />
         </div>
@@ -282,14 +282,14 @@ function TheKit() {
           </h3>
           <ul className="grid grid-cols-2 gap-5 md:grid-cols-4 lg:gap-6">
             {kitContents.map((item) => (
-              <li key={item.name} className="flex flex-col overflow-hidden rounded-3xl bg-stone">
-                <div className="relative aspect-square w-full bg-linen">
+              <li key={item.name} className="group flex flex-col overflow-hidden rounded-3xl bg-stone">
+                <div className="relative aspect-square w-full overflow-hidden bg-linen">
                   <Image
                     src={item.src}
                     alt={item.alt}
                     fill
                     sizes="(min-width: 768px) 25vw, 50vw"
-                    className="object-cover object-center"
+                    className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5 p-5">
